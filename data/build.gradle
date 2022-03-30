@@ -1,0 +1,14 @@
+apply plugin: 'com.android.library'
+apply from: "$rootProject.projectDir/android.gradle"
+
+dependencies {
+
+    implementation AndroidX.core.ktx
+    implementation AndroidX.appCompat
+    implementation Google.android.material
+    implementation project(path: ':core')
+
+    implementation 'javax.inject:javax.inject:1'
+
+    testImplementation Testing.junit4
+}

@@ -1,0 +1,26 @@
+apply plugin: 'com.android.application'
+apply plugin:  'dagger.hilt.android.plugin'
+apply from: "$rootProject.projectDir/android.gradle"
+
+dependencies {
+    
+    implementation project(path: ':core')
+    implementation project(path: ':data')
+    implementation project(path: ':feature-stocklist')
+    implementation project(path: ':feature-addstock')
+
+    implementation Google.dagger.hilt.android
+    kapt Google.dagger.hilt.compiler
+
+    implementation AndroidX.appCompat
+    implementation AndroidX.activity.ktx
+    implementation AndroidX.constraintLayout
+    implementation AndroidX.core.ktx
+    implementation AndroidX.lifecycle.runtimeKtx
+
+    implementation KotlinX.coroutines.android
+
+    implementation Google.android.material
+
+    testImplementation Testing.junit4
+}

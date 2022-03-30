@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: "$rootProject.projectDir/android.gradle"
+
+dependencies {
+
+    api "io.arrow-kt:arrow-core:_"
+    kapt "io.arrow-kt:arrow-meta:_"
+
+    api 'com.jakewharton.threetenabp:threetenabp:_'
+
+    api JakeWharton.timber
+
+    implementation 'javax.inject:javax.inject:1'
+    implementation KotlinX.coroutines.android
+
+    implementation AndroidX.core.ktx
+    implementation AndroidX.appCompat
+    implementation Google.android.material
+    implementation AndroidX.lifecycle.commonJava8
+
+    testImplementation Testing.junit4
+}

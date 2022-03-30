@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply plugin:  'dagger.hilt.android.plugin'
+apply from: "$rootProject.projectDir/android.gradle"
+
+dependencies {
+    implementation project(path: ':core')
+
+    implementation Google.dagger.hilt.android
+    kapt Google.dagger.hilt.compiler
+
+    implementation AndroidX.fragment.ktx
+
+    implementation AndroidX.core.ktx
+    implementation AndroidX.appCompat
+    implementation AndroidX.lifecycle.liveDataKtx
+    implementation AndroidX.lifecycle.viewModelKtx
+
+    implementation Google.android.material
+
+    testImplementation Testing.junit4
+}
