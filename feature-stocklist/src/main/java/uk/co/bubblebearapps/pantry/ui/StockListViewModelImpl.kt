@@ -33,7 +33,7 @@ internal class StockListViewModelImpl @Inject constructor(
 
     private fun getStockList() {
         viewModelScope.launch {
-            when (val result = getStockList.invoke(GetStockList.Params)) {
+            when (val result = getStockList(GetStockList.Params)) {
                 is Either.Left -> {
                     Timber.e(result.value)
                     _viewState.postValue(ViewState.Error(::getStockList))

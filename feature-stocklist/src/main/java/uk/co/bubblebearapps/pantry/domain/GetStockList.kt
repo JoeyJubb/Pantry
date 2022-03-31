@@ -1,14 +1,12 @@
 package uk.co.bubblebearapps.pantry.domain
 
-import arrow.core.Either
 import uk.co.bubblebearapps.pantry.data.PantryRepository
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
-import uk.co.bubblebearapps.pantry.ext.mapItems
 import javax.inject.Inject
 
 internal class GetStockList @Inject constructor(
     private val repository: PantryRepository,
-) : UseCase<GetStockList.Params, GetStockList.Result> {
+) : UseCase<GetStockList.Params, GetStockList.Result>() {
 
     object Params
 
@@ -16,10 +14,10 @@ internal class GetStockList @Inject constructor(
         val items: List<StockListItem>,
     )
 
-    override suspend fun invoke(params: Params): Either<Throwable, Result> =
+    override suspend fun doWork(params: Params): Result =
         repository.getStock()
-            .mapItems{ stock ->
+            .map { stock ->
                 StockListItem(name = stock.name)
             }
-            .map { pantryItems -> Result(pantryItems) }
+            .let { pantryItems -> Result(pantryItems) }
 }
