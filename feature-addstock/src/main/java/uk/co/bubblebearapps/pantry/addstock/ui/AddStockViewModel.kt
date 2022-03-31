@@ -12,5 +12,6 @@ interface AddStockViewModel {
         object Idle : ViewState()
         object Loading : ViewState()
         object Error: ViewState()
+        object Complete: ViewState()
     }
 }

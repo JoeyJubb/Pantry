@@ -7,13 +7,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockUseCase
 import uk.co.bubblebearapps.pantry.addstock.ui.AddStockViewModel.ViewState
-import uk.co.bubblebearapps.pantry.domain.Destination
-import uk.co.bubblebearapps.pantry.domain.Navigator
 import javax.inject.Inject
 
 @HiltViewModel
 class AddStockViewModelImpl @Inject constructor(
-    private val navigator: Navigator,
     private val addStock: AddStockUseCase,
 ) : AddStockViewModel, ViewModel(){
 
@@ -29,7 +26,7 @@ class AddStockViewModelImpl @Inject constructor(
                         viewState.value = ViewState.Error
                     },
                     {/* success */
-                        navigator.navigateTo(Destination.StockList)
+                        viewState.value = ViewState.Complete
                     }
                 )
         }

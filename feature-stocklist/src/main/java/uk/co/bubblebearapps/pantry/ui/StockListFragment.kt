@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
+import uk.co.bubblebearapps.pantry.domain.StockListNavigator
 import uk.co.bubblebearapps.pantry.ext.observe
 import uk.co.bubblebearapps.pantry.stocklist.databinding.StockListFragmentBinding
 import uk.co.bubblebearapps.pantry.ui.StockListViewModel.ViewState
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class StockListFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = StockListFragment()
-    }
+    @Inject lateinit var stockListNavigator: StockListNavigator
 
     private lateinit var binding : StockListFragmentBinding
     private lateinit var adapter: StockListAdapter
@@ -40,6 +40,7 @@ class StockListFragment : Fragment() {
         binding.floatingActionButton.setOnClickListener { viewModel.onAddButtonPress() }
 
         observe(viewModel.viewState, ::onViewStateChanged)
+        observe(viewModel.events, ::onEvent)
     }
 
     private fun onViewStateChanged(viewState: ViewState) {
@@ -49,5 +50,15 @@ class StockListFragment : Fragment() {
                 // TODO - show empty state
             }
         }
+    }
+
+    private fun onEvent(event: StockListViewModel.Event) {
+        when(event){
+            StockListViewModel.Event.GoToAddStock -> stockListNavigator.goToAddStock()
+        }
+    }
+
+    companion object {
+        fun newInstance() = StockListFragment()
     }
 }

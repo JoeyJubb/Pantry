@@ -1,25 +1,25 @@
 package uk.co.bubblebearapps.pantry.addstock.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import uk.co.bubblebearapps.pantry.addstock.R
 import uk.co.bubblebearapps.pantry.addstock.databinding.AddStockFragmentBinding
+import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.ext.observe
 import uk.co.bubblebearapps.pantry.ext.setOnImeActionListener
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddStockFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = AddStockFragment()
-    }
+    @Inject lateinit var navigator: AddStockNavigator
 
     private val viewModel: AddStockViewModel by viewModels<AddStockViewModelImpl>()
 
@@ -56,6 +56,9 @@ class AddStockFragment : Fragment() {
                 showLoading(true)
                 showContent(false)
             }
+            AddStockViewModel.ViewState.Complete -> {
+                navigator.backToStockList()
+            }
         }
     }
 
@@ -83,5 +86,9 @@ class AddStockFragment : Fragment() {
         }else{
             viewModel.onItemAdded(itemName)
         }
+    }
+
+    companion object {
+        fun newInstance() = AddStockFragment()
     }
 }
