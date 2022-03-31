@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import uk.co.bubblebearapps.pantry.domain.StockListNavigator
 import uk.co.bubblebearapps.pantry.ext.observe
@@ -37,6 +39,8 @@ class StockListFragment : Fragment() {
 
         adapter = StockListAdapter()
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
+
         binding.floatingActionButton.setOnClickListener { viewModel.onAddButtonPress() }
 
         observe(viewModel.viewState, ::onViewStateChanged)

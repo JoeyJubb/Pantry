@@ -1,26 +1,23 @@
 package uk.co.bubblebearapps.pantry.ui
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.RecyclerView
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
 import uk.co.bubblebearapps.pantry.stocklist.databinding.StockListFragmentItemBinding
 
-internal class StockListAdapter : RecyclerView.Adapter<StockListAdapter.StockItemViewHolder>() {
+internal class StockListAdapter : RecyclerView.Adapter<StockItemViewHolder>() {
 
-    var items: List<StockListItem> = emptyList()
+    private val diffCallback = StockListItemCallback()
+    private val differ = AsyncListDiffer(this, diffCallback)
+
+    var items: List<StockListItem>
+        get() = differ.currentList
         set(value) {
-            field = value
-            notifyDataSetChanged()
+            differ.submitList(value)
         }
-
-    class StockItemViewHolder(private val binding: StockListFragmentItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(entry: StockListItem) {
-            binding.textName.text = entry.name
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StockItemViewHolder =
         StockListFragmentItemBinding.inflate(
@@ -33,6 +30,20 @@ internal class StockListAdapter : RecyclerView.Adapter<StockListAdapter.StockIte
 
     override fun onBindViewHolder(holder: StockItemViewHolder, position: Int) {
         holder.bind(getItemAt(position))
+    }
+
+    override fun onBindViewHolder(
+        holder: StockItemViewHolder,
+        position: Int,
+        payloads: MutableList<Any>,
+    ) {
+        if (payloads.isEmpty()) {
+            onBindViewHolder(holder, position)
+        } else {
+            payloads.forEach { payload ->
+                holder.bind(payload as Bundle)
+            }
+        }
     }
 
     private fun getItemAt(position: Int): StockListItem = items[position]
