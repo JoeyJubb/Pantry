@@ -14,6 +14,7 @@ import uk.co.bubblebearapps.pantry.addstock.databinding.AddStockFragmentBinding
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.ext.observe
 import uk.co.bubblebearapps.pantry.ext.setOnImeActionListener
+import uk.co.bubblebearapps.pantry.ext.showKeyboard
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -68,6 +69,7 @@ class AddStockFragment : Fragment() {
 
     private fun showContent(show: Boolean) {
         binding.groupInput.isVisible = show
+        binding.etItemName.showKeyboard()
     }
 
     private fun showLoading(show: Boolean) {
