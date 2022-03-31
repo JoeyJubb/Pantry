@@ -1,5 +1,7 @@
 # Pantry Demo App
 
+A super simple app that displays a list of items you've entered. One day it might become an app to keep track of what food you've got in your cupboards. For now it exists as a technical demo for interviews :D
+
 ## Module Overview
 
 ### app
