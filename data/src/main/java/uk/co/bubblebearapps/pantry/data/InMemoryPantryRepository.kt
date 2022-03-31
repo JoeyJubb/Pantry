@@ -7,13 +7,11 @@ class InMemoryPantryRepository @Inject constructor(
 
 ): PantryRepository {
 
-    override suspend fun getStock() =
-            listOf(
-                Stock("One"),
-                Stock("Two"),
-                Stock("Three"),
-                Stock("Four"),
-                Stock("Five"),
-            )
+    private val stockList = mutableListOf<Stock>()
 
+    override suspend fun getStock() = stockList
+
+    override fun addStock(itemName: String): Stock =
+        stockList.find { it.name == itemName }
+            ?: Stock(itemName).apply { stockList.add(this) }
 }

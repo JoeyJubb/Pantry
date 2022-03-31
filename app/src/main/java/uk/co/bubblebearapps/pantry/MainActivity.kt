@@ -8,7 +8,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import uk.co.bubblebearapps.pantry.addstock.AddStockFragment
+import uk.co.bubblebearapps.pantry.addstock.ui.AddStockFragment
 import uk.co.bubblebearapps.pantry.domain.Destination
 import uk.co.bubblebearapps.pantry.ui.StockListFragment
 import javax.inject.Inject

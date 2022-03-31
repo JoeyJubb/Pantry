@@ -11,6 +11,6 @@ abstract class UseCase<Params, Result> {
                 { throwable -> Either.Left(throwable) }
             )
 
-    abstract suspend fun doWork(params: Params) : Result
+    protected abstract suspend fun doWork(params: Params) : Result
 
 }

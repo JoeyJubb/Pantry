@@ -5,4 +5,6 @@ import uk.co.bubblebearapps.pantry.domain.model.Stock
 interface PantryRepository {
 
     suspend fun getStock() : List<Stock>
+
+    abstract fun addStock(itemName: String): Stock
 }

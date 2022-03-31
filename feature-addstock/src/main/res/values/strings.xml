@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_add_item">Add an item</string>
+    <string name="add">Add</string>
+    <string name="err_required">Required</string>
+    <string name="err_add">Something went wrong, please try again</string>
+</resources>
