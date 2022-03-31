@@ -10,7 +10,7 @@ import uk.co.bubblebearapps.pantry.addstock.ui.AddStockViewModel.ViewState
 import javax.inject.Inject
 
 @HiltViewModel
-class AddStockViewModelImpl @Inject constructor(
+internal class AddStockViewModelImpl @Inject constructor(
     private val addStock: AddStockUseCase,
 ) : AddStockViewModel, ViewModel(){
 

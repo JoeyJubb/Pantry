@@ -4,7 +4,7 @@ import uk.co.bubblebearapps.pantry.data.PantryRepository
 import uk.co.bubblebearapps.pantry.domain.UseCase
 import javax.inject.Inject
 
-class AddStockUseCase @Inject constructor(
+internal class AddStockUseCase @Inject constructor(
     private val pantryRepository: PantryRepository,
 ) : UseCase<AddStockUseCase.Params, Unit>() {
 

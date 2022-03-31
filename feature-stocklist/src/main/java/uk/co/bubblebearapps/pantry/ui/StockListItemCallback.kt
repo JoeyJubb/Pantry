@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.DiffUtil
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
 import uk.co.bubblebearapps.pantry.ext.equals
 
-class StockListItemCallback : DiffUtil.ItemCallback<StockListItem>() {
+internal class StockListItemCallback : DiffUtil.ItemCallback<StockListItem>() {
 
     override fun areItemsTheSame(oldItem: StockListItem, newItem: StockListItem): Boolean = equals(
         oldItem, newItem

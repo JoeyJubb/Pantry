@@ -6,7 +6,7 @@ import uk.co.bubblebearapps.pantry.addstock.ui.AddStockFragment
 import uk.co.bubblebearapps.pantry.domain.StockListNavigator
 import javax.inject.Inject
 
-class StockListNavigatorImpl @Inject constructor(
+internal class StockListNavigatorImpl @Inject constructor(
     private val activity: FragmentActivity,
 ) : StockListNavigator {
 

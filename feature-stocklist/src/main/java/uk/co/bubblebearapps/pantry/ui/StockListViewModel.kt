@@ -3,7 +3,7 @@ package uk.co.bubblebearapps.pantry.ui
 import androidx.lifecycle.LiveData
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
 
-interface StockListViewModel {
+internal interface StockListViewModel {
 
     val viewState: LiveData<ViewState>
     val events: EventLiveData<Event>

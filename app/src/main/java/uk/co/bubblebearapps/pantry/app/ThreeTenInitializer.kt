@@ -5,7 +5,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import uk.co.bubblebearapps.pantry.domain.model.AppInitializer
 import javax.inject.Inject
 
-class ThreeTenInitializer @Inject constructor(
+internal class ThreeTenInitializer @Inject constructor(
 
 ): AppInitializer {
 

@@ -2,7 +2,7 @@ package uk.co.bubblebearapps.pantry.addstock.ui
 
 import androidx.lifecycle.LiveData
 
-interface AddStockViewModel {
+internal interface AddStockViewModel {
 
     val viewState: LiveData<ViewState>
 

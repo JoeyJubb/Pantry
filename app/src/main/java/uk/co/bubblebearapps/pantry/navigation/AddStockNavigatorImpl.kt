@@ -6,7 +6,7 @@ import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.navigation.StockListNavigatorImpl.Companion.BACK_STACK_ENTRY_ADD_STOCK
 import javax.inject.Inject
 
-class AddStockNavigatorImpl @Inject constructor(
+internal class AddStockNavigatorImpl @Inject constructor(
     private val activity: FragmentActivity,
 ) : AddStockNavigator {
 

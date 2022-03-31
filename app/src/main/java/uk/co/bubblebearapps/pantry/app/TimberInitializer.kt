@@ -6,7 +6,7 @@ import uk.co.bubblebearapps.pantry.BuildConfig
 import uk.co.bubblebearapps.pantry.domain.model.AppInitializer
 import javax.inject.Inject
 
-class TimberInitializer @Inject constructor(
+internal class TimberInitializer @Inject constructor(
 
 ): AppInitializer {
 

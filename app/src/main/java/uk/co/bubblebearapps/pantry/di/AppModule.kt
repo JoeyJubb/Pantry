@@ -29,7 +29,7 @@ internal interface AppModule {
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ProvidesAppModule{
+internal class ProvidesAppModule{
 
     @Provides
     @Singleton
