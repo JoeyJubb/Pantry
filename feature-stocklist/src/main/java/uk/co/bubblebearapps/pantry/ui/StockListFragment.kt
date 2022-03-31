@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,13 +43,11 @@ class StockListFragment : Fragment() {
     }
 
     private fun onViewStateChanged(viewState: ViewState) {
-        binding.progress.hide()
         when (viewState) {
-            is ViewState.Error -> Toast.makeText(requireContext(),
-                "Error TODO",
-                Toast.LENGTH_SHORT).show()
-            is ViewState.Loading -> binding.progress.show()
             is ViewState.Result -> adapter.items = viewState.list
+            ViewState.Empty -> {
+                // TODO - show empty state
+            }
         }
     }
 }

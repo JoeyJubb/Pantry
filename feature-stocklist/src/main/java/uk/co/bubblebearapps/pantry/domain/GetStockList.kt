@@ -1,23 +1,21 @@
 package uk.co.bubblebearapps.pantry.domain
 
+import kotlinx.coroutines.flow.Flow
 import uk.co.bubblebearapps.pantry.data.PantryRepository
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
+import uk.co.bubblebearapps.pantry.ext.mapItems
 import javax.inject.Inject
 
 internal class GetStockList @Inject constructor(
     private val repository: PantryRepository,
-) : UseCase<GetStockList.Params, GetStockList.Result>() {
+) : FlowUseCase<GetStockList.Params, List<StockListItem>>() {
 
     object Params
 
-    data class Result(
-        val items: List<StockListItem>,
-    )
-
-    override suspend fun doWork(params: Params): Result =
-        repository.getStock()
-            .map { stock ->
+    override fun invoke(params: Params): Flow<List<StockListItem>> {
+        return repository.getStock()
+            .mapItems { stock ->
                 StockListItem(name = stock.name)
             }
-            .let { pantryItems -> Result(pantryItems) }
+    }
 }

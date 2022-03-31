@@ -1,10 +1,11 @@
 package uk.co.bubblebearapps.pantry.data
 
+import kotlinx.coroutines.flow.Flow
 import uk.co.bubblebearapps.pantry.domain.model.Stock
 
 interface PantryRepository {
 
-    suspend fun getStock() : List<Stock>
+    fun getStock() : Flow<List<Stock>>
 
-    abstract fun addStock(itemName: String): Stock
+    suspend fun addStock(itemName: String): Stock
 }

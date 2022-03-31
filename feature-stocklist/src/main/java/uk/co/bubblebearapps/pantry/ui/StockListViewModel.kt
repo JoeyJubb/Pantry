@@ -10,11 +10,10 @@ interface StockListViewModel {
     fun onAddButtonPress()
 
     sealed class ViewState {
-        object Loading : ViewState()
+        object Empty : ViewState()
+
         data class Result(
             val list: List<StockListItem>,
         ) : ViewState()
-
-        data class Error(val retryAction: () -> Unit) : ViewState()
     }
 }
