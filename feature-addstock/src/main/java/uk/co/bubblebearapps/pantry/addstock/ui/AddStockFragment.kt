@@ -79,7 +79,7 @@ class AddStockFragment : Fragment() {
     }
 
     private fun onDoneButtonPress() {
-        val itemName = binding.etItemName.toString()
+        val itemName = binding.etItemName.text.toString()
 
         if(itemName.isBlank()){
             binding.etItemName.error = getString(R.string.err_required)
