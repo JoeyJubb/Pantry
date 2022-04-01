@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container_view, StockListFragment.newInstance())

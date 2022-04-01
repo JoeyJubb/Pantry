@@ -1,6 +1,6 @@
 ##https://ncorti.com/blog/howto-github-actions-building-android
 name: Build
-on: [pull_request, push]
+on: [ pull_request, push ]
 jobs:
   build:
     runs-on: ubuntu-latest

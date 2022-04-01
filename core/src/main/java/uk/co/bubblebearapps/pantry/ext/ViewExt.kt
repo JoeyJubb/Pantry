@@ -7,6 +7,6 @@ import androidx.core.content.ContextCompat
 fun View.showKeyboard() {
     if (requestFocus()) {
         val imm = ContextCompat.getSystemService(context, InputMethodManager::class.java)
-        imm?.showSoftInput(this , InputMethodManager.SHOW_IMPLICIT)
+        imm?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
     }
 }

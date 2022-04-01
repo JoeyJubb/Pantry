@@ -11,8 +11,7 @@ import javax.inject.Inject
 internal class Navigator @Inject constructor(
     private val activity: FragmentActivity,
 ) : AddStockNavigator,
-    StockListNavigator
-{
+    StockListNavigator {
 
     override fun closeAddStock() {
         activity

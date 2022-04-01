@@ -11,9 +11,10 @@ internal class StockListItemCallback : DiffUtil.ItemCallback<StockListItem>() {
         oldItem, newItem
     ) { it.id }
 
-    override fun areContentsTheSame(oldItem: StockListItem, newItem: StockListItem): Boolean = equals(
-        oldItem, newItem
-    ) { it.name }
+    override fun areContentsTheSame(oldItem: StockListItem, newItem: StockListItem): Boolean =
+        equals(
+            oldItem, newItem
+        ) { it.name }
 
     override fun getChangePayload(oldItem: StockListItem, newItem: StockListItem): Bundle {
         val payload = Bundle()
@@ -24,7 +25,7 @@ internal class StockListItemCallback : DiffUtil.ItemCallback<StockListItem>() {
         return payload
     }
 
-    companion object{
+    companion object {
         const val PAYLOAD_NAME = "PAYLOAD_NAME"
     }
 }

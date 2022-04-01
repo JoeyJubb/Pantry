@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class InMemoryPantryRepository @Inject constructor(
 
-): PantryRepository {
+) : PantryRepository {
 
     private val stockList = mutableListOf<Stock>()
     private val stockFlow = MutableSharedFlow<List<Stock>>(replay = 1)
@@ -18,10 +18,11 @@ class InMemoryPantryRepository @Inject constructor(
     override fun getStock(): Flow<List<Stock>> = stockFlow
 
     override suspend fun addStock(itemName: String): Stock =
-            stockList.find { it.name == itemName }
-                ?: Stock(
-                    id = generateId(),
-                    name = itemName).apply { addToList(this) }
+        stockList.find { it.name == itemName }
+            ?: Stock(
+                id = generateId(),
+                name = itemName
+            ).apply { addToList(this) }
 
     private fun generateId(): String = atomicInteger.getAndIncrement().toString()
 

@@ -5,9 +5,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.amshove.kluent.shouldBeEqualTo
-
 import org.junit.Test
-import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 class UseCaseTest {
@@ -17,7 +15,7 @@ class UseCaseTest {
         val response = "and you know it"
 
         val worksFine = object : UseCase<String, String>() {
-            override suspend fun doWork(params: String) : String{
+            override suspend fun doWork(params: String): String {
                 return response
             }
         }
@@ -30,7 +28,7 @@ class UseCaseTest {
         val exception = mockk<Exception>()
 
         val broken = object : UseCase<String, String>() {
-            override suspend fun doWork(params: String) : String{
+            override suspend fun doWork(params: String): String {
                 throw exception
             }
         }

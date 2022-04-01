@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath Android.tools.build.gradlePlugin
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:_"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
         classpath Google.dagger.hilt.android.gradlePlugin
 
         // NOTE: Do not place your application dependencies here; they belong

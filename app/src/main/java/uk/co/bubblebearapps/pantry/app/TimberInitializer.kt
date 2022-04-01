@@ -8,10 +8,10 @@ import javax.inject.Inject
 
 internal class TimberInitializer @Inject constructor(
 
-): AppInitializer {
+) : AppInitializer {
 
     override fun init(app: Application) {
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
     }

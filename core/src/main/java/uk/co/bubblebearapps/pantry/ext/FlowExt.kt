@@ -8,4 +8,4 @@ import kotlinx.coroutines.flow.map
  * Convenience function for mapping the items of a flow that emits a list
  */
 fun <T, R> Flow<List<T>>.mapItems(function: (T) -> R): Flow<List<R>> =
-    map { list -> list.map{ item -> function(item)} }
+    map { list -> list.map { item -> function(item) } }

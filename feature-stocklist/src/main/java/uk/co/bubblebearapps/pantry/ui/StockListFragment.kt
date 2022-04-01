@@ -18,9 +18,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class StockListFragment : Fragment() {
 
-    @Inject lateinit var stockListNavigator: StockListNavigator
+    @Inject
+    lateinit var stockListNavigator: StockListNavigator
 
-    private lateinit var binding : StockListFragmentBinding
+    private lateinit var binding: StockListFragmentBinding
     private lateinit var adapter: StockListAdapter
 
     private val viewModel: StockListViewModel by viewModels<StockListViewModelImpl>()
@@ -39,7 +40,12 @@ class StockListFragment : Fragment() {
 
         adapter = StockListAdapter()
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
+        binding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                RecyclerView.VERTICAL
+            )
+        )
 
         binding.floatingActionButton.setOnClickListener { viewModel.onAddButtonPress() }
 
@@ -50,14 +56,12 @@ class StockListFragment : Fragment() {
     private fun onViewStateChanged(viewState: ViewState) {
         when (viewState) {
             is ViewState.Result -> adapter.items = viewState.list
-            ViewState.Empty -> {
-                // TODO - show empty state
-            }
+            ViewState.Empty -> adapter.items = emptyList()
         }
     }
 
     private fun onEvent(event: StockListViewModel.Event) {
-        when(event){
+        when (event) {
             StockListViewModel.Event.GoToAddStock -> stockListNavigator.goToAddStock()
         }
     }

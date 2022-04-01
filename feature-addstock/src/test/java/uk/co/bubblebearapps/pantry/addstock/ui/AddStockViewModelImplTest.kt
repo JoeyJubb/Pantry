@@ -1,7 +1,8 @@
 package uk.co.bubblebearapps.pantry.addstock.ui
 
 import androidx.lifecycle.Observer
-import arrow.core.Either.*
+import arrow.core.Either.Left
+import arrow.core.Either.Right
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -11,7 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import uk.co.bubblebearapps.lib_test_base.ViewModelTestBase
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockUseCase
-import uk.co.bubblebearapps.pantry.addstock.ui.AddStockViewModel.*
+import uk.co.bubblebearapps.pantry.addstock.ui.AddStockViewModel.ViewState
 
 @ExperimentalCoroutinesApi
 class AddStockViewModelImplTest : ViewModelTestBase(
@@ -20,11 +21,11 @@ class AddStockViewModelImplTest : ViewModelTestBase(
 
     private val addStock: AddStockUseCase = mockk()
 
-    private val viewStateObserver = mockk<Observer<ViewState>>{
+    private val viewStateObserver = mockk<Observer<ViewState>> {
         every { onChanged(any()) } returns Unit
     }
 
-    private lateinit var subject : AddStockViewModel
+    private lateinit var subject: AddStockViewModel
 
     @Before
     fun setUp() {
@@ -36,12 +37,12 @@ class AddStockViewModelImplTest : ViewModelTestBase(
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         subject.viewState.removeObserver(viewStateObserver)
     }
 
     @Test
-    fun `should start in Idle state`(){
+    fun `should start in Idle state`() {
         subject.viewState.value shouldBeEqualTo ViewState.Idle
     }
 
@@ -60,7 +61,7 @@ class AddStockViewModelImplTest : ViewModelTestBase(
             viewStateObserver.onChanged(ViewState.Complete)
         }
         // AND usecase was invoked
-        coVerify(exactly = 1){ addStock.invoke(itemName) }
+        coVerify(exactly = 1) { addStock.invoke(itemName) }
     }
 
     @Test
@@ -74,6 +75,6 @@ class AddStockViewModelImplTest : ViewModelTestBase(
             viewStateObserver.onChanged(ViewState.Loading)
             viewStateObserver.onChanged(ViewState.Error)
         }
-        coVerify(exactly = 1){ addStock.invoke(itemName) }
+        coVerify(exactly = 1) { addStock.invoke(itemName) }
     }
 }

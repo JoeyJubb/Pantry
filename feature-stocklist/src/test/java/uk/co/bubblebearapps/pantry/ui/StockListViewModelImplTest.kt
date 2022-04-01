@@ -8,13 +8,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.test.runTest
 import org.junit.After
-
 import org.junit.Before
 import org.junit.Test
 import uk.co.bubblebearapps.lib_test_base.ViewModelTestBase
 import uk.co.bubblebearapps.pantry.domain.GetStockList
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
-import uk.co.bubblebearapps.pantry.ui.StockListViewModel.*
+import uk.co.bubblebearapps.pantry.ui.StockListViewModel.Event
+import uk.co.bubblebearapps.pantry.ui.StockListViewModel.ViewState
 
 @ExperimentalCoroutinesApi
 class StockListViewModelImplTest : ViewModelTestBase() {
@@ -29,7 +29,7 @@ class StockListViewModelImplTest : ViewModelTestBase() {
 
 
     @Before
-    fun setup(){
+    fun setup() {
         every { getStockList.invoke(Unit) } returns stockListFlow
         every { viewStateObserver.onChanged(any()) } returns Unit
         every { eventsObserver.onChanged(any()) } returns Unit
@@ -43,7 +43,7 @@ class StockListViewModelImplTest : ViewModelTestBase() {
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         subject.viewState.removeObserver(viewStateObserver)
         subject.events.removeObserver(eventsObserver)
     }

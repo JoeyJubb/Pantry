@@ -6,8 +6,6 @@ dependencies {
     api "io.arrow-kt:arrow-core:_"
     kapt "io.arrow-kt:arrow-meta:_"
 
-    api 'com.jakewharton.threetenabp:threetenabp:_'
-
     api JakeWharton.timber
 
     implementation 'javax.inject:javax.inject:1'

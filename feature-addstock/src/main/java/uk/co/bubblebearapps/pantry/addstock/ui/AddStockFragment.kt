@@ -20,7 +20,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class AddStockFragment : Fragment() {
 
-    @Inject lateinit var navigator: AddStockNavigator
+    @Inject
+    lateinit var navigator: AddStockNavigator
 
     private val viewModel: AddStockViewModel by viewModels<AddStockViewModelImpl>()
 
@@ -37,7 +38,7 @@ class AddStockFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.etItemName.setOnImeActionListener{ onDoneButtonPress() }
+        binding.etItemName.setOnImeActionListener { onDoneButtonPress() }
         binding.btnAdd.setOnClickListener { onDoneButtonPress() }
 
         observe(viewModel.viewState, ::onViewStateChange)
@@ -45,7 +46,7 @@ class AddStockFragment : Fragment() {
 
     private fun onViewStateChange(viewState: AddStockViewModel.ViewState) {
         showLoading(false)
-        when(viewState){
+        when (viewState) {
             AddStockViewModel.ViewState.Error -> {
                 showError()
                 showContent(true)
@@ -73,9 +74,9 @@ class AddStockFragment : Fragment() {
     }
 
     private fun showLoading(show: Boolean) {
-        if(show){
+        if (show) {
             binding.progress.show()
-        }else{
+        } else {
             binding.progress.hide()
         }
     }
@@ -83,9 +84,9 @@ class AddStockFragment : Fragment() {
     private fun onDoneButtonPress() {
         val itemName = binding.etItemName.text.toString()
 
-        if(itemName.isBlank()){
+        if (itemName.isBlank()) {
             binding.etItemName.error = getString(R.string.err_required)
-        }else{
+        } else {
             viewModel.onItemAdded(itemName)
         }
     }

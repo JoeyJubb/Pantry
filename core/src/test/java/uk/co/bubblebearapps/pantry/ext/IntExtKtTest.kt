@@ -1,6 +1,7 @@
 package uk.co.bubblebearapps.pantry.ext
 
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class IntExtKtTest {

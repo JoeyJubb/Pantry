@@ -11,7 +11,7 @@ internal interface AddStockViewModel {
     sealed class ViewState {
         object Idle : ViewState()
         object Loading : ViewState()
-        object Error: ViewState()
-        object Complete: ViewState()
+        object Error : ViewState()
+        object Complete : ViewState()
     }
 }

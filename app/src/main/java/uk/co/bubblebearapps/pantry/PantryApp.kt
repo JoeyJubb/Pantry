@@ -8,7 +8,8 @@ import javax.inject.Inject
 @HiltAndroidApp
 class PantryApp : Application() {
 
-    @Inject lateinit var appInitializers : Set<@JvmSuppressWildcards AppInitializer>
+    @Inject
+    lateinit var appInitializers: Set<@JvmSuppressWildcards AppInitializer>
 
     override fun onCreate() {
         super.onCreate()

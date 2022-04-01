@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">My Pantry</string>
-
-    <string name="fragment_label_stock_list">My Stock</string>
-    <string name="fragment_label_add_stock">Add Stock</string>
 </resources>

@@ -10,7 +10,7 @@ internal interface StockListViewModel {
 
     fun onAddButtonPress()
 
-    sealed class Event{
+    sealed class Event {
         object GoToAddStock : Event()
     }
 

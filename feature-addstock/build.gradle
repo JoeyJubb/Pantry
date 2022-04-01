@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin:  'dagger.hilt.android.plugin'
+apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootProject.projectDir/android.gradle"
 
 dependencies {

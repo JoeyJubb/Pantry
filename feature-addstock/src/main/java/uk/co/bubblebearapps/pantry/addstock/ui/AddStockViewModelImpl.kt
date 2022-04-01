@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 internal class AddStockViewModelImpl @Inject constructor(
     private val addStock: AddStockUseCase,
-) : AddStockViewModel, ViewModel(){
+) : AddStockViewModel, ViewModel() {
 
     override val viewState = MutableLiveData<ViewState>(ViewState.Idle)
 
