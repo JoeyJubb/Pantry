@@ -6,12 +6,10 @@ import javax.inject.Inject
 
 internal class AddStockUseCase @Inject constructor(
     private val pantryRepository: PantryRepository,
-) : UseCase<AddStockUseCase.Params, Unit>() {
+) : UseCase<String, Unit>() {
 
-    data class Params(val itemName: String)
-
-    override suspend fun doWork(params: Params): Unit =
-        pantryRepository.addStock(params.itemName)
+    override suspend fun doWork(params: String): Unit =
+        pantryRepository.addStock(params)
             .let { }
 
 }

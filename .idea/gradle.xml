@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/data" />
             <option value="$PROJECT_DIR$/feature-addstock" />
             <option value="$PROJECT_DIR$/feature-stocklist" />
+            <option value="$PROJECT_DIR$/lib-test-base" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -17,5 +17,6 @@ dependencies {
 
     implementation Google.android.material
 
-    testImplementation Testing.junit4
+    testImplementation project(path: ':lib-test-base')
+
 }

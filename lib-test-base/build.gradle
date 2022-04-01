@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+apply from: "$rootProject.projectDir/android.gradle"
+
+dependencies {
+
+    api Testing.junit4
+    api AndroidX.archCore.testing
+    api KotlinX.coroutines.core
+    api KotlinX.coroutines.test
+
+    api AndroidX.lifecycle.liveDataKtx
+
+    //https://mockk.io/
+    api Testing.mockK
+    api 'io.mockk:mockk-agent-jvm:_'
+
+    //https://github.com/MarkusAmshove/Kluent
+    api 'org.amshove.kluent:kluent-android:_'
+    api Kotlin.test.junit
+}

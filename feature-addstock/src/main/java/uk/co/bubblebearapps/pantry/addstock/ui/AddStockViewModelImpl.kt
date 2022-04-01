@@ -20,7 +20,7 @@ internal class AddStockViewModelImpl @Inject constructor(
         viewModelScope.launch {
             viewState.value = ViewState.Loading
 
-            addStock(AddStockUseCase.Params(itemName))
+            addStock(itemName)
                 .fold(
                     {/* error */
                         viewState.value = ViewState.Error

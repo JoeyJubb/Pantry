@@ -15,5 +15,6 @@ rootProject.name = "Pantry"
 include ':app'
 include ':core'
 include ':data'
+include ':lib-test-base'
 include ':feature-stocklist'
 include ':feature-addstock'
