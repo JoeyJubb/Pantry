@@ -18,5 +18,5 @@ dependencies {
     implementation Google.android.material
     implementation AndroidX.lifecycle.commonJava8
 
-    testImplementation Testing.junit4
+    testImplementation project(path: ':lib-test-base')
 }
