@@ -16,5 +16,5 @@ dependencies {
     implementation AndroidX.lifecycle.liveDataKtx
     implementation AndroidX.lifecycle.viewModelKtx
 
-    testImplementation Testing.junit4
+    testImplementation project(path: ':lib-test-base')
 }

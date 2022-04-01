@@ -29,7 +29,7 @@ internal class StockListViewModelImpl @Inject constructor(
 
     private fun getStockList() {
         viewModelScope.launch {
-            getStockList(GetStockList.Params)
+            getStockList(Unit)
                 .collect(::onStockListUpdated)
         }
     }
