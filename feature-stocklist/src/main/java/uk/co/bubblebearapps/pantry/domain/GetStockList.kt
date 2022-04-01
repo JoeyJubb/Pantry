@@ -11,8 +11,6 @@ internal class GetStockList @Inject constructor(
     private val repository: PantryRepository,
 ) : FlowUseCase<Unit, List<StockListItem>>() {
 
-    object Params
-
     override fun invoke(params: Unit): Flow<List<StockListItem>> {
         return repository.getStock()
             .map { it.asReversed() }
