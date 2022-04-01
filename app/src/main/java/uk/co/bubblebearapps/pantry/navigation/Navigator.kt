@@ -1,14 +1,24 @@
 package uk.co.bubblebearapps.pantry.navigation
 
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import uk.co.bubblebearapps.pantry.R
+import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.addstock.ui.AddStockFragment
 import uk.co.bubblebearapps.pantry.domain.StockListNavigator
 import javax.inject.Inject
 
-internal class StockListNavigatorImpl @Inject constructor(
+internal class Navigator @Inject constructor(
     private val activity: FragmentActivity,
-) : StockListNavigator {
+) : AddStockNavigator,
+    StockListNavigator
+{
+
+    override fun closeAddStock() {
+        activity
+            .supportFragmentManager
+            .popBackStack(BACK_STACK_ENTRY_ADD_STOCK, POP_BACK_STACK_INCLUSIVE)
+    }
 
     override fun goToAddStock() {
         activity

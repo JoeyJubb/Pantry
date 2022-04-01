@@ -6,16 +6,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.domain.StockListNavigator
-import uk.co.bubblebearapps.pantry.navigation.AddStockNavigatorImpl
-import uk.co.bubblebearapps.pantry.navigation.StockListNavigatorImpl
+import uk.co.bubblebearapps.pantry.navigation.Navigator
 
 @Module
 @InstallIn(ActivityComponent::class)
 internal interface NavigatorModule {
 
     @Binds
-    fun addStockNavigator(impl: AddStockNavigatorImpl): AddStockNavigator
+    fun addStockNavigator(impl: Navigator): AddStockNavigator
 
     @Binds
-    fun stockListNavigator(impl: StockListNavigatorImpl): StockListNavigator
+    fun stockListNavigator(impl: Navigator): StockListNavigator
 }

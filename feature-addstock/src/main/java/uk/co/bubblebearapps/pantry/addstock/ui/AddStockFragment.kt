@@ -58,7 +58,7 @@ class AddStockFragment : Fragment() {
                 showContent(false)
             }
             AddStockViewModel.ViewState.Complete -> {
-                navigator.backToStockList()
+                navigator.closeAddStock()
             }
         }
     }
