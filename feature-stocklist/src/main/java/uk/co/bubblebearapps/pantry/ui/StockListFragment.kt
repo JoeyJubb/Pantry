@@ -21,8 +21,9 @@ class StockListFragment : Fragment() {
     @Inject
     lateinit var stockListNavigator: StockListNavigator
 
-    private lateinit var binding: StockListFragmentBinding
     private lateinit var adapter: StockListAdapter
+
+    private lateinit var binding: StockListFragmentBinding
 
     private val viewModel: StockListViewModel by viewModels<StockListViewModelImpl>()
 

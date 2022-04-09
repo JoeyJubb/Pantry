@@ -2,7 +2,6 @@ package uk.co.bubblebearapps.pantry.addstock.ui
 
 import androidx.lifecycle.Observer
 import arrow.core.Either.Left
-import arrow.core.Either.Right
 import io.mockk.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -12,6 +11,8 @@ import org.junit.Before
 import org.junit.Test
 import uk.co.bubblebearapps.lib_test_base.ViewModelTestBase
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockUseCase
+import uk.co.bubblebearapps.pantry.addstock.domain.GetStockSnapshotUseCase
+import uk.co.bubblebearapps.pantry.addstock.domain.UpdateStockUseCase
 import uk.co.bubblebearapps.pantry.addstock.ui.AddStockViewModel.ViewState
 
 @ExperimentalCoroutinesApi
@@ -20,6 +21,8 @@ class AddStockViewModelImplTest : ViewModelTestBase(
 ) {
 
     private val addStock: AddStockUseCase = mockk()
+    private val getStockSnapshot: GetStockSnapshotUseCase = mockk()
+    private val updateStock: UpdateStockUseCase = mockk()
 
     private val viewStateObserver = mockk<Observer<ViewState>> {
         every { onChanged(any()) } returns Unit
@@ -30,7 +33,9 @@ class AddStockViewModelImplTest : ViewModelTestBase(
     @Before
     fun setUp() {
         subject = AddStockViewModelImpl(
-            addStock
+            addStock,
+            getStockSnapshot,
+            updateStock
         )
 
         subject.viewState.observeForever(viewStateObserver)
@@ -43,25 +48,7 @@ class AddStockViewModelImplTest : ViewModelTestBase(
 
     @Test
     fun `should start in Idle state`() {
-        subject.viewState.value shouldBeEqualTo ViewState.Idle
-    }
-
-    @Test
-    fun `onItemAdded happy path invokes usecase and completes`() = runTest {
-        // GIVEN use case is happy
-        val itemName = "item name"
-        coEvery { addStock.invoke(itemName) } returns Right(Unit)
-
-        // WHEN onItemAdded
-        subject.onItemAdded(itemName)
-
-        // THEN observer sees Loading then Complete
-        verifyOrder {
-            viewStateObserver.onChanged(ViewState.Loading)
-            viewStateObserver.onChanged(ViewState.Complete)
-        }
-        // AND usecase was invoked
-        coVerify(exactly = 1) { addStock.invoke(itemName) }
+        subject.viewState.value shouldBeEqualTo ViewState.NameEntry
     }
 
     @Test
@@ -69,7 +56,7 @@ class AddStockViewModelImplTest : ViewModelTestBase(
         val itemName = "item name"
         coEvery { addStock.invoke(itemName) } returns Left(mockk())
 
-        subject.onItemAdded(itemName)
+        subject.onNameEntered(itemName)
 
         verifyOrder {
             viewStateObserver.onChanged(ViewState.Loading)
