@@ -10,8 +10,10 @@ import org.amshove.kluent.shouldBeEqualTo
 import org.junit.Before
 import org.junit.Test
 import uk.co.bubblebearapps.pantry.data.PantryRepository
+import uk.co.bubblebearapps.pantry.domain.model.Item
 import uk.co.bubblebearapps.pantry.domain.model.Stock
 import uk.co.bubblebearapps.pantry.domain.model.StockListItem
+import uk.co.bubblebearapps.pantry.domain.model.UnitOfMeasure
 
 @ExperimentalCoroutinesApi
 class GetStockListTest {
@@ -31,29 +33,20 @@ class GetStockListTest {
     fun `use case correctly maps and reverses list from repository`() = runTest {
         every { repository.getStock() } returns flowOf(
             listOf(
-                Stock(id = "1", name = "Name1"),
-                Stock(id = "2", name = "Name2"),
-                Stock(id = "3", name = "Name3"),
+                Stock(item = Item(id = "1", name = "Name1", unitOfMeasure = UnitOfMeasure.MASS_GRAMS), quantity = 4),
+                Stock(item = Item(id = "2", name = "Name2", unitOfMeasure = UnitOfMeasure.UNITS), quantity = 5),
+                Stock(item = Item(id = "3", name = "Name3", unitOfMeasure = UnitOfMeasure.VOLUME_MILLILITERS), quantity = 6),
+                Stock(item = Item(id = "4", name = "Name4", unitOfMeasure = UnitOfMeasure.LENGTH_MILLIMETERS), quantity = 7),
             ),
-            listOf(
-                Stock(id = "4", name = "Name4"),
-                Stock(id = "5", name = "Name5"),
-                Stock(id = "6", name = "Name6"),
-            )
         )
 
         val results = subject.invoke(Unit).toList()
 
         results[0] shouldBeEqualTo listOf(
-            StockListItem(id = "3", name = "Name3"),
-            StockListItem(id = "2", name = "Name2"),
-            StockListItem(id = "1", name = "Name1"),
-        )
-
-        results[1] shouldBeEqualTo listOf(
-            StockListItem(id = "6", name = "Name6"),
-            StockListItem(id = "5", name = "Name5"),
-            StockListItem(id = "4", name = "Name4"),
+            StockListItem(id = "4", name = "Name4", unitOfMeasure = UnitOfMeasure.LENGTH_MILLIMETERS, quantity = 7),
+            StockListItem(id = "3", name = "Name3", unitOfMeasure = UnitOfMeasure.VOLUME_MILLILITERS, quantity = 6),
+            StockListItem(id = "2", name = "Name2", unitOfMeasure = UnitOfMeasure.UNITS, quantity = 5),
+            StockListItem(id = "1", name = "Name1", unitOfMeasure = UnitOfMeasure.MASS_GRAMS, quantity = 4),
         )
     }
 }

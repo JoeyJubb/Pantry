@@ -16,8 +16,10 @@ internal class GetStockList @Inject constructor(
             .map { it.asReversed() }
             .mapItems { stock ->
                 StockListItem(
-                    id = stock.id,
-                    name = stock.name
+                    id = stock.item.id,
+                    name = stock.item.name,
+                    unitOfMeasure = stock.item.unitOfMeasure,
+                    quantity = stock.quantity
                 )
             }
     }

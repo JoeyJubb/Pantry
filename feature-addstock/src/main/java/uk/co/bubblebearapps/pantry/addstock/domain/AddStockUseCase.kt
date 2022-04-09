@@ -9,7 +9,7 @@ internal class AddStockUseCase @Inject constructor(
 ) : UseCase<String, Unit>() {
 
     override suspend fun doWork(params: String): Unit =
-        pantryRepository.addStock(params)
-            .let { }
-
+        pantryRepository.addItem(
+            itemName = params
+        ).let {  }
 }
