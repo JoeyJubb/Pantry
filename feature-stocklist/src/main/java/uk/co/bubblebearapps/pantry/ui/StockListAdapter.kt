@@ -1,6 +1,5 @@
 package uk.co.bubblebearapps.pantry.ui
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -41,7 +40,7 @@ internal class StockListAdapter : RecyclerView.Adapter<StockItemViewHolder>() {
             onBindViewHolder(holder, position)
         } else {
             payloads.forEach { payload ->
-                holder.bind(payload as Bundle)
+                holder.bind(payload as StockListItemCallback.ChangePayload)
             }
         }
     }
