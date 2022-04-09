@@ -1,15 +1,17 @@
 package uk.co.bubblebearapps.pantry.data
 
 import kotlinx.coroutines.flow.Flow
-import uk.co.bubblebearapps.pantry.domain.model.Item
 import uk.co.bubblebearapps.pantry.domain.model.Stock
+import uk.co.bubblebearapps.pantry.domain.model.StockId
+import uk.co.bubblebearapps.pantry.domain.model.UnitOfMeasure
 
 interface PantryRepository {
 
     fun getStock(): Flow<List<Stock>>
 
-    /**
-     * Known errors: AlreadyAddedException when the item already exists in the database
-     */
-    suspend fun addItem(itemName: String): Result<Item>
+    fun getStock(stockId: StockId) : Flow<Stock>
+
+    suspend fun newStock(name: String): StockId
+
+    suspend fun updateStock(stockId: StockId, unitOfMeasure: UnitOfMeasure, quantity: Int)
 }

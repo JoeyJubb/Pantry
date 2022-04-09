@@ -1,6 +1,10 @@
 package uk.co.bubblebearapps.pantry.domain.model
 
+typealias StockId = String
+
 data class Stock(
-    val item: Item,
+    val id: StockId,
+    val name: String,
+    val unitOfMeasure: UnitOfMeasure,
     val quantity: Int,
 )

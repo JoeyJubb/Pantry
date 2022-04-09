@@ -1,6 +1,7 @@
 package uk.co.bubblebearapps.pantry.domain
 
 import arrow.core.Either
+import timber.log.Timber
 
 abstract class UseCase<Params, Result> {
 
@@ -8,7 +9,10 @@ abstract class UseCase<Params, Result> {
         kotlin.runCatching { doWork(params) }
             .fold(
                 { result -> Either.Right(result) },
-                { throwable -> Either.Left(throwable) }
+                { throwable ->
+                    Timber.e(throwable)
+                    Either.Left(throwable)
+                }
             )
 
     protected abstract suspend fun doWork(params: Params): Result
