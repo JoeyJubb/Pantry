@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uk.co.bubblebearapps.pantry.recipelist.ui.RecipeListFragment">
+    tools:context=".ui.RecipeListFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello recipe list" />
+    <Button
+        android:id="@+id/btn_add_recipe"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open add recipe screen" />
 
 </FrameLayout>

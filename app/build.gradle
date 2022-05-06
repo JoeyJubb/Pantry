@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootProject.projectDir/android.gradle"
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 dependencies {
 
     implementation project(path: ':core')
     implementation project(path: ':data')
 
-    implementation project(path: ':feature-stocklist')
-    implementation project(path: ':feature-addstock')
     implementation project(path: ':feature-recipelist')
     implementation project(path: ':feature-addrecipe')
+    implementation project(path: ':feature-shopping-list')
 
     implementation Google.dagger.hilt.android
     kapt Google.dagger.hilt.compiler
@@ -20,6 +20,8 @@ dependencies {
     implementation AndroidX.constraintLayout
     implementation AndroidX.core.ktx
     implementation AndroidX.lifecycle.runtimeKtx
+    implementation AndroidX.navigation.uiKtx
+    implementation AndroidX.navigation.fragmentKtx
 
     implementation KotlinX.coroutines.android
 

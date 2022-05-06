@@ -1,15 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootProject.projectDir/android.gradle"
-apply plugin: 'org.jetbrains.kotlin.android'
 
 dependencies {
     implementation project(path: ':core')
 
     implementation Google.dagger.hilt.android
-    implementation 'androidx.legacy:legacy-support-v4:_'
-    implementation AndroidX.lifecycle.liveDataKtx
-    implementation AndroidX.lifecycle.viewModelKtx
     kapt Google.dagger.hilt.compiler
 
     implementation Google.android.material

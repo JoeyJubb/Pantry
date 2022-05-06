@@ -3,18 +3,22 @@ package uk.co.bubblebearapps.pantry.di
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
-import uk.co.bubblebearapps.pantry.domain.StockListNavigator
+import dagger.hilt.android.components.FragmentComponent
+import uk.co.bubblebearapps.pantry.addrecipe.domain.AddRecipeNavigator
 import uk.co.bubblebearapps.pantry.navigation.Navigator
+import uk.co.bubblebearapps.pantry.recipelist.domain.RecipeListNavigator
+import uk.co.bubblebearapps.panty.shoppinglist.domain.ShoppingListNavigator
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(FragmentComponent::class)
 internal interface NavigatorModule {
 
     @Binds
-    fun addStockNavigator(impl: Navigator): AddStockNavigator
+    fun bindAddRecipeNavigator(impl: Navigator): AddRecipeNavigator
 
     @Binds
-    fun stockListNavigator(impl: Navigator): StockListNavigator
+    fun bindRecipeListNavigator(impl: Navigator): RecipeListNavigator
+
+    @Binds
+    fun bindShoppingListNavigator(impl: Navigator): ShoppingListNavigator
 }

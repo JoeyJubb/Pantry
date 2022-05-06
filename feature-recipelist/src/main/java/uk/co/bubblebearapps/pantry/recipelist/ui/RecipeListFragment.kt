@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import uk.co.bubblebearapps.pantry.addrecipe.databinding.RecipeListFragmentBinding
+import uk.co.bubblebearapps.pantry.recipelist.databinding.RecipeListFragmentBinding
 import uk.co.bubblebearapps.pantry.recipelist.domain.RecipeListNavigator
 import javax.inject.Inject
 
@@ -32,6 +32,12 @@ class RecipeListFragment : Fragment() {
     ): View {
         binding = RecipeListFragmentBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnAddRecipe.setOnClickListener{ navigator.goToAddRecipe() }
     }
 
 }

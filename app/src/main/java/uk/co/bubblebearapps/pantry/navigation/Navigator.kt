@@ -1,39 +1,35 @@
 package uk.co.bubblebearapps.pantry.navigation
 
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import uk.co.bubblebearapps.pantry.R
 import uk.co.bubblebearapps.pantry.addrecipe.domain.AddRecipeNavigator
-import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
-import uk.co.bubblebearapps.pantry.addstock.ui.AddStockFragment
-import uk.co.bubblebearapps.pantry.domain.StockListNavigator
 import uk.co.bubblebearapps.pantry.recipelist.domain.RecipeListNavigator
+import uk.co.bubblebearapps.pantry.recipelist.ui.RecipeListFragmentDirections
+import uk.co.bubblebearapps.panty.shoppinglist.domain.ShoppingListNavigator
 import javax.inject.Inject
 
 internal class Navigator @Inject constructor(
-    private val activity: FragmentActivity,
-) : AddStockNavigator,
-    StockListNavigator,
-    AddRecipeNavigator,
-    RecipeListNavigator
-{
+    private val fragment: Fragment,
+) : AddRecipeNavigator,
+    RecipeListNavigator,
+    ShoppingListNavigator {
 
-    override fun closeAddStock() {
-        activity
-            .supportFragmentManager
-            .popBackStack(BACK_STACK_ENTRY_ADD_STOCK, POP_BACK_STACK_INCLUSIVE)
+    override fun goToAddRecipe() {
+        RecipeListFragmentDirections
+            .actionRecipeListFragmentToAddRecipeFragment()
+            .go()
     }
 
-    override fun goToAddStock() {
-        activity
-            .supportFragmentManager
-            .beginTransaction()
-            .addToBackStack(BACK_STACK_ENTRY_ADD_STOCK)
-            .replace(R.id.fragment_container_view, AddStockFragment.newInstance())
-            .commit()
+    override fun closeAddRecipe() {
+        fragment.findNavController().popBackStack(
+            R.id.addRecipeFragment, true
+        )
     }
 
-    companion object {
-        const val BACK_STACK_ENTRY_ADD_STOCK: String = "BACK_STACK_ENTRY_ADD_STOCK"
+    private fun NavDirections.go() {
+        fragment.findNavController()
+            .navigate(this)
     }
 }
