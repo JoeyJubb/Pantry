@@ -6,8 +6,11 @@ dependencies {
 
     implementation project(path: ':core')
     implementation project(path: ':data')
+
     implementation project(path: ':feature-stocklist')
     implementation project(path: ':feature-addstock')
+    implementation project(path: ':feature-recipelist')
+    implementation project(path: ':feature-addrecipe')
 
     implementation Google.dagger.hilt.android
     kapt Google.dagger.hilt.compiler

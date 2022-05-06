@@ -3,15 +3,20 @@ package uk.co.bubblebearapps.pantry.navigation
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import uk.co.bubblebearapps.pantry.R
+import uk.co.bubblebearapps.pantry.addrecipe.domain.AddRecipeNavigator
 import uk.co.bubblebearapps.pantry.addstock.domain.AddStockNavigator
 import uk.co.bubblebearapps.pantry.addstock.ui.AddStockFragment
 import uk.co.bubblebearapps.pantry.domain.StockListNavigator
+import uk.co.bubblebearapps.pantry.recipelist.domain.RecipeListNavigator
 import javax.inject.Inject
 
 internal class Navigator @Inject constructor(
     private val activity: FragmentActivity,
 ) : AddStockNavigator,
-    StockListNavigator {
+    StockListNavigator,
+    AddRecipeNavigator,
+    RecipeListNavigator
+{
 
     override fun closeAddStock() {
         activity
