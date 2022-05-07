@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="grams_x">%dg</string>
+    <string name="milliliters_x">%dmm</string>
+    <string name="millimeters_x">%dml</string>
+</resources>

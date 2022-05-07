@@ -7,14 +7,13 @@ import uk.co.bubblebearapps.pantry.R
 import uk.co.bubblebearapps.pantry.addrecipe.domain.AddRecipeNavigator
 import uk.co.bubblebearapps.pantry.recipelist.domain.RecipeListNavigator
 import uk.co.bubblebearapps.pantry.recipelist.ui.RecipeListFragmentDirections
-import uk.co.bubblebearapps.panty.shoppinglist.domain.ShoppingListNavigator
 import javax.inject.Inject
 
 internal class Navigator @Inject constructor(
     private val fragment: Fragment,
 ) : AddRecipeNavigator,
-    RecipeListNavigator,
-    ShoppingListNavigator {
+    RecipeListNavigator
+{
 
     override fun goToAddRecipe() {
         RecipeListFragmentDirections

@@ -10,7 +10,7 @@ dependencies {
 
     implementation project(path: ':feature-recipelist')
     implementation project(path: ':feature-addrecipe')
-    implementation project(path: ':feature-shopping-list')
+    implementation project(path: ':feature-shoppinglist')
 
     implementation Google.dagger.hilt.android
     kapt Google.dagger.hilt.compiler

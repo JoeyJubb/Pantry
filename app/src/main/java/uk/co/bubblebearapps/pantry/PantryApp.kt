@@ -2,7 +2,7 @@ package uk.co.bubblebearapps.pantry
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import uk.co.bubblebearapps.pantry.domain.model.AppInitializer
+import uk.co.bubblebearapps.pantry.domain.AppInitializer
 import javax.inject.Inject
 
 @HiltAndroidApp
