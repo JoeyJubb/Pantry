@@ -2,6 +2,7 @@ package uk.co.bubblebearapps.pantry
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -35,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // hide navigation until ready to show recipe stuff
+        if(!BuildConfig.DEBUG){
+            navView.isVisible = false
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

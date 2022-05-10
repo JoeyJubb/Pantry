@@ -5,11 +5,11 @@ import android.widget.EditText
 
 fun EditText.setOnImeActionListener(
     action: Int = EditorInfo.IME_ACTION_DONE,
-    function: () -> Unit
+    function: EditText.() -> Unit
 ) {
     setOnEditorActionListener { _, actionId, _ ->
         if (actionId == action) {
-            function()
+            function(this)
             true
         } else {
             false

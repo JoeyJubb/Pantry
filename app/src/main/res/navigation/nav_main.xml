@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/recipeListFragment">
+    app:startDestination="@id/shoppingListFragment">
 
     <fragment
         android:id="@+id/recipeListFragment"
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/shoppingListFragment"
-        android:name="uk.co.bubblebearapps.pantry.shoppinglist.ui.ShoppingListFragment"
+        android:name="uk.co.bubblebearapps.pantry.ui.ShoppingListContainerFragment"
         android:label="ShoppingListFragment"
         tools:layout="@layout/shopping_list_fragment"/>
 

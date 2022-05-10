@@ -20,7 +20,7 @@ class InMemoryPantryRepository @Inject constructor(
 
     override fun getShoppingList(): Flow<List<Item>> = stockUpdateFlow.map { items }
 
-    override suspend fun newIngredient(
+    override suspend fun addToShoppingList(
         name: String,
     ): ItemId =
         (findStockByName(name) ?: addStock(name))
@@ -32,13 +32,13 @@ class InMemoryPantryRepository @Inject constructor(
             id = generateId(),
             name = name,
             unitOfMeasure = UnitOfMeasure.UNITS,
-            quantity = 0,
+            quantity = 1,
         ).also { stock ->
             items.add(stock)
             stockUpdateFlow.emit(stock.id)
         }
 
-    override suspend fun updateIngredient(
+    override suspend fun updateShoppingListItem(
         itemId: ItemId,
         unitOfMeasure: UnitOfMeasure,
         quantity: Int

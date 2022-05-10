@@ -9,7 +9,7 @@ interface PantryRepository {
 
     fun getShoppingList(): Flow<List<Item>>
 
-    suspend fun newIngredient(name: String): ItemId
+    suspend fun addToShoppingList(name: String): ItemId
 
-    suspend fun updateIngredient(itemId: ItemId, unitOfMeasure: UnitOfMeasure, quantity: Int)
+    suspend fun updateShoppingListItem(itemId: ItemId, unitOfMeasure: UnitOfMeasure, quantity: Int)
 }
