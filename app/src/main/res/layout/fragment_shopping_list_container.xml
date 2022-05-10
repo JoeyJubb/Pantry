@@ -6,25 +6,18 @@
     android:orientation="vertical"
     tools:context=".ui.ShoppingListContainerFragment">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorSurface"
-        android:elevation="2dp">
-
-        <fragment
-            android:id="@+id/quickAddFragment"
-            android:name="uk.co.bubblebearapps.pantry.quickadd.ui.QuickAddFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout="@layout/quick_add_fragment" />
-    </FrameLayout>
-
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/shoppingListFragment"
         android:name="uk.co.bubblebearapps.pantry.shoppinglist.ui.ShoppingListFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         tools:layout="@layout/shopping_list_fragment" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/quickAddFragment"
+        android:name="uk.co.bubblebearapps.pantry.quickadd.ui.QuickAddFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/quick_add_fragment" />
 </LinearLayout>

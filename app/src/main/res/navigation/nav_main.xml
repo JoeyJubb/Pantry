@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/shoppingListFragment"
         android:name="uk.co.bubblebearapps.pantry.ui.ShoppingListContainerFragment"
-        android:label="ShoppingListFragment"
+        android:label="@string/nav_shopping_list"
         tools:layout="@layout/shopping_list_fragment"/>
 
     <fragment
