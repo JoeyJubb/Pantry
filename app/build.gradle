@@ -1,15 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'dagger.hilt.android.plugin'
 apply from: "$rootProject.projectDir/android.gradle"
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 dependencies {
 
     implementation project(path: ':core')
     implementation project(path: ':data')
-    implementation project(path: ':feature-stocklist')
-    implementation project(path: ':feature-addstock')
+
+    implementation project(path: ':feature-recipelist')
+    implementation project(path: ':feature-addrecipe')
+    implementation project(path: ':feature-shoppinglist')
+    implementation project(path: ':feature-quickadd')
 
     implementation Google.dagger.hilt.android
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Google.dagger.hilt.compiler
 
     implementation AndroidX.appCompat
@@ -17,6 +23,8 @@ dependencies {
     implementation AndroidX.constraintLayout
     implementation AndroidX.core.ktx
     implementation AndroidX.lifecycle.runtimeKtx
+    implementation AndroidX.navigation.uiKtx
+    implementation AndroidX.navigation.fragmentKtx
 
     implementation KotlinX.coroutines.android
 

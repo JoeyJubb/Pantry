@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.ShoppingListContainerFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:elevation="2dp">
+
+        <fragment
+            android:id="@+id/quickAddFragment"
+            android:name="uk.co.bubblebearapps.pantry.quickadd.ui.QuickAddFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/quick_add_fragment" />
+    </FrameLayout>
+
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="uk.co.bubblebearapps.pantry.shoppinglist.ui.ShoppingListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/shopping_list_fragment" />
+</LinearLayout>
